@@ -1,9 +1,18 @@
 {
     "name": "RealTimeWebChat",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "description": "Real time web chat",
+	"scripts":{
+		"start": "node index.js"
+	},
     "dependencies": {
-        "express": "latest"
+        "express": "latest",
+		"socket.io": "latest"
     },
-    "author": "asaayo"
+	"repository":{
+		"type": "git",
+		"url": "https://github.com/asaayo/nodejschat"
+	},
+    "author": "asaayo",
+	"license": "MIT"
 }
