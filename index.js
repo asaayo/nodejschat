@@ -9,6 +9,10 @@ app.get('/', function(request, response){
 	response.sendFile(__dirname + '/index.html');
 });
 
+app.get('/public/style.css', function(request, response){
+	response.sendFile(__dirname + '/public/style.css');
+});
+
 io.on('connection', function(socket){
 	socket.on('statusMessage', function(message){
 		console.log(message);
