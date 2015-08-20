@@ -5,7 +5,9 @@
 		<link rel="stylesheet" href="public/style.css"></link>
 	</head>
 	<body>
-		<ul id="messages"></ul>
+		<div id="messagediv">
+			<ul id="messages"></ul>
+		</div>
 		<form action="">
 			<input id="m" autocomplete="off" /><button>Send</button>
 		</form>
@@ -26,14 +28,17 @@
 			$('#m').val('');
 			return false;
 		});
+		
 		socket.on('chatMessage', function(message){
-			var $msg = $('#messages');
+			var $msgdiv = $('#messagediv');
 			message = JSON.parse(message);
 			var line = "<li> <span class='user'>" + message.user + "</span>: " + message.chatMessage + "</li>";
-			$msg.append(line);
-			var height = $msg[0].scrollHeight;
-			$msg.scrollTop($msg[0].scrollHeight);
+			$('#messages').append(line);
+			$('#messagediv').animate({
+				scrollTop: $('#messagediv')[0].scrollHeight
+			});
 		});
+		
 		socket.on('statusMessage', function(message){
 			$('#messages').append($('<li>').text(message))
 		});

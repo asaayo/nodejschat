@@ -28,12 +28,16 @@ form button {
 	border: none; 
 	padding: 10px; 
 }
+
+#messagediv{
+}
+
 #messages { 
 	list-style-type: none;
-	bottom:0px;
-	margin: 0; 
-	padding-bottom: 50px; 
+	margin-bottom: 50px; 
 	overflow-y: auto;
+	min-height: 100px;
+	
 }
 #messages li { 
 	padding: 5px 10px;
