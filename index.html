@@ -32,6 +32,7 @@
 				"chatMessage": message,
 				"user": whoami
 			};
+			console.log(datas);
 			socket.emit('chatMessage', JSON.stringify(datas));
 			$('#m').val('');
 			return false;
