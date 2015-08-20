@@ -10,11 +10,13 @@ app.get('/', function(request, response){
 });
 
 io.on('connection', function(socket){
-	io.emit('user connected');
-	console.log('user connected');
-	socket.on('chat message', function(message){
-		io.emit('chat message', message);
+	socket.on('statusMessage', function(message){
 		console.log(message);
+		io.emit('statusMessage', message);
+	});
+	socket.on('chatMessage', function(message){
+		console.log(JSON.parse(message));
+		io.emit('chatMessage', message);
 	});
 	socket.on('disconnect', function(){
 		console.log('user disconnected');
