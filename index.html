@@ -6,12 +6,12 @@
 	</head>
 	<body>
 		<ul id="messages"></ul>
-			<form action="">
+		<form action="">
 			<input id="m" autocomplete="off" /><button>Send</button>
-			</form>
+		</form>
 	</body>
 	<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-	<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script>
 		var socket = io();
 		var whoami = prompt("Please enter your name", "Mystery guest");
@@ -22,7 +22,6 @@
 				"chatMessage": message,
 				"user": whoami
 			};
-			console.log('Sending data');
 			socket.emit('chatMessage', JSON.stringify(datas));
 			$('#m').val('');
 			return false;
@@ -32,8 +31,8 @@
 			message = JSON.parse(message);
 			var line = "<li> <span class='user'>" + message.user + "</span>: " + message.chatMessage + "</li>";
 			$msg.append(line);
-			console.log($msg[0].scrollHeight);
-			$msg.animate({scrollTop: $msg[0].scrollHeight}, 1000);
+			var height = $msg[0].scrollHeight;
+			$msg.scrollTop($msg[0].scrollHeight);
 		});
 		socket.on('statusMessage', function(message){
 			$('#messages').append($('<li>').text(message))
