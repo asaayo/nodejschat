@@ -4,7 +4,7 @@
 		<title>Socket.IO chat</title>
 		<link rel="stylesheet" href="public/style.css"></link>
 	</head>
-	<body>
+	<body onresize="resizeFunction()">
 		<div id="messagediv">
 			<div id="innderdiv"><ul id="messages"></ul></div>
 		</div>
@@ -43,9 +43,11 @@
 			$('#messages').append($('<li>').text(message))
 		});
 		
+		resizeFunction(){
+			$('#messagediv').css('height',  $(document).height() - 45 + "px")
+		}
+		
 		$(document).ready(function(){
-			console.log($(document).height()-50);
-			console.log($('#messagediv').css('height',  $(document).height() - 45 + "px"));
 			$('#messagediv').bind("DOMSubtreeModified", function(){
 				$('#messagediv').animate({
 					scrollTop: $('#messagediv')[0].scrollHeight
