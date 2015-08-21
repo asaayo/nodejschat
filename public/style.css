@@ -1,3 +1,4 @@
+/*
 * {	
 	margin: 0;
 	padding: 0; 
@@ -13,7 +14,7 @@ form {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	height: 45px;
+	height: 40px;
 	width: 100%;
 }
 form input { 
@@ -29,15 +30,17 @@ form button {
 	padding: 10px; 
 }
 
+#innerdiv{
+	overflow: auto;
+	height:551px;
+}
+
 #messagediv{
+	overflow: none;
 }
 
 #messages { 
 	list-style-type: none;
-	margin-bottom: 50px; 
-	overflow-y: auto;
-	min-height: 100px;
-	
 }
 #messages li { 
 	padding: 5px 10px;
@@ -48,3 +51,49 @@ form button {
 .user{
 	color: #898989
 }
+*/
+* {	
+	margin: 0;
+	padding: 0; 
+	box-sizing: border-box; 
+}
+body { 
+	font: 13px Helvetica, Arial;
+}
+#messagediv{
+	overflow-y: auto;
+}
+form { 
+	background: #000; 
+	padding: 3px; 
+	position: fixed; 
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 40px;
+	width: 100%;
+}
+form input { 
+	border: 0; 
+	padding: 10px; 
+	width: 90%; 
+	margin-right: .5%;
+}
+form button { 
+	width: 9%; 
+	background: rgb(130, 224, 255); 
+	border: none; 
+	padding: 10px; 
+}
+#messages { 
+	list-style-type: none;
+}
+#messages li { 
+	padding: 5px 10px;
+}
+#messages li:nth-child(odd) { 
+	background: #eee; 
+}
+.user{
+	color: #898989
+} 

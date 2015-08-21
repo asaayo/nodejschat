@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<div id="messagediv">
-			<ul id="messages"></ul>
+			<div id="innderdiv"><ul id="messages"></ul></div>
 		</div>
 		<form action="">
 			<input id="m" autocomplete="off" /><button>Send</button>
@@ -34,13 +34,23 @@
 			message = JSON.parse(message);
 			var line = "<li> <span class='user'>" + message.user + "</span>: " + message.chatMessage + "</li>";
 			$('#messages').append(line);
-			$('#messagediv').animate({
-				scrollTop: $('#messagediv')[0].scrollHeight
-			});
+			console.log($('#messages')[0].scrollHeight);
+			$('body').scrollTop(('#messages')[0].scrollHeight + $('#messagediv')[0].scrollHeight);
+			console.log($('#messages')[0].scrollHeight);
 		});
 		
 		socket.on('statusMessage', function(message){
 			$('#messages').append($('<li>').text(message))
+		});
+		
+		$(document).ready(function(){
+			console.log($(document).height()-50);
+			console.log($('#messagediv').css('height',  $(document).height() - 45 + "px"));
+			$('#messagediv').bind("DOMSubtreeModified", function(){
+				$('#messagediv').animate({
+					scrollTop: $('#messagediv')[0].scrollHeight
+				});
+			});
 		});
 	</script>
 </html>
