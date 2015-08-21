@@ -15,9 +15,12 @@
 	<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script>
+		//We need a socket
 		var socket = io();
+		//And to know what to call this user
 		var whoami = prompt("Please enter your name", "Mystery guest");
-		socket.emit('statusMessage', whoami + ' connected.');	
+		socket.emit('statusMessage', whoami + ' connected');
+		//Send the chat message
 		$('form').submit(function(){
 			var message = $('#m').val();
 			var datas = {
@@ -29,6 +32,7 @@
 			return false;
 		});
 		
+		//Print received chat messages and scroll the window when necessary
 		socket.on('chatMessage', function(message){
 			var $msgdiv = $('#messagediv');
 			message = JSON.parse(message);
@@ -39,25 +43,25 @@
 			console.log($('#messages')[0].scrollHeight);
 		});
 		
+		//User connect messages
 		socket.on('statusMessage', function(message){
 			$('#messages').append($('<li>').text(message))
 		});
 		
+		//Resizes the message div
 		function resizeFunction(){
 			$('#messagediv').css('height',  $(document).height() - 45 + "px")
 		};
 		
+		//Resize message div if the window is resized so scrollTop continues to work
 		$(window).resize(function(){
 			resizeFunction();
 		});
 		
+		
+		//Size the window when the application starts
 		$(document).ready(function(){
-		resizeFunction();
-			$('#messagediv').bind("DOMSubtreeModified", function(){
-				$('#messagediv').animate({
-					scrollTop: $('#messagediv')[0].scrollHeight
-				});
-			});
+			resizeFunction();
 		});
 	</script>
 </html>
