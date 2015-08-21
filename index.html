@@ -43,9 +43,13 @@
 			$('#messages').append($('<li>').text(message))
 		});
 		
-		resizeFunction(){
+		function resizeFunction(){
 			$('#messagediv').css('height',  $(document).height() - 45 + "px")
-		}
+		};
+		
+		$(window).resize(function(){
+			resizeFunction();
+		});
 		
 		$(document).ready(function(){
 			$('#messagediv').bind("DOMSubtreeModified", function(){

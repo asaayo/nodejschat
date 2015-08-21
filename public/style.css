@@ -55,7 +55,8 @@ form button {
 * {	
 	margin: 0;
 	padding: 0; 
-	box-sizing: border-box; 
+	box-sizing: border-box;
+	overflow: none; !important
 }
 body { 
 	font: 13px Helvetica, Arial;
