@@ -56,13 +56,13 @@ form button {
 	margin: 0;
 	padding: 0; 
 	box-sizing: border-box;
-	overflow: none; !important
+	overflow: hidden;
 }
 body { 
 	font: 13px Helvetica, Arial;
 }
 #messagediv{
-	overflow-y: auto;
+	overflow-y: auto; !important
 }
 form { 
 	background: #000; 
