@@ -38,9 +38,6 @@
 			message = JSON.parse(message);
 			var line = "<li> <span class='user'>" + message.user + "</span>: " + message.chatMessage + "</li>";
 			$('#messages').append(line);
-			console.log($('#messages')[0].scrollHeight);
-			$('body').scrollTop(('#messages')[0].scrollHeight + $('#messagediv')[0].scrollHeight);
-			console.log($('#messages')[0].scrollHeight);
 		});
 		
 		//User connect messages
