@@ -62,6 +62,11 @@
 		//Size the window when the application starts
 		$(document).ready(function(){
 			resizeFunction();
+			$('#messagediv').bind("DOMSubtreeModified", function(){
+				$('#messagediv').animate({
+					scrollTop: $('#messagediv')[0].scrollHeight
+				});
+			});
 		});
 	</script>
 </html>
