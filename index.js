@@ -10,9 +10,9 @@ app.get('/', function(request, response){
 	response.sendFile(__dirname + '/index.html');
 });
 
-//Route for css
-app.get('/public/style.css', function(request, response){
-	response.sendFile(__dirname + '/public/style.css');
+//Route for css, js
+app.get('/public/:name', function(request, response){
+	response.sendFile(__dirname + '/public/' + request.params.name)
 });
 
 //Socket handling
@@ -26,7 +26,6 @@ io.on('connection', function(socket){
 		io.emit('chatMessage', message);
 	});
 	socket.on('disconnect', function(){
-		console.log('user disconnected');
 	});
 });
 
