@@ -23,11 +23,11 @@
 		//Send the chat message
 		$('form').submit(function(){
 			var message = $('#m').val();
-			var datas = {
+			var data = {
 				"chatMessage": message,
 				"user": whoami
 			};
-			socket.emit('chatMessage', JSON.stringify(datas));
+			socket.emit('chatMessage', JSON.stringify(data));
 			$('#m').val('');
 			return false;
 		});
